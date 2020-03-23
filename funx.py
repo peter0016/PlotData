@@ -25,10 +25,10 @@ def plot_dfs(keyword,dfs,startdate,enddate):
         
         
     
-def dropdown_menu(dfs,fnamep,startdate,enddate):
+def dropdown_menu(dfs,startdate,enddate):
     plot_dfs('Beide_Logger',dfs,startdate,enddate)
     w = widgets.Dropdown(
-        options=['beide_Logger', 'Logger_01', 'Logger_02'],
+        options=['Beide_Logger', 'Logger_01', 'Logger_02'],
         description='Darstellung:',
         disabled=False
     )
