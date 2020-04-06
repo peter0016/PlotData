@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 #funx.py
 import matplotlib.pyplot as plt
 import warnings
@@ -50,7 +53,7 @@ def a():
 def startup():
     warnings.filterwarnings("ignore")
     pd.options.mode.chained_assignment = None  #pandas Warnungen ausblenden
-    df = pd.DataFrame(np.random.randn(3, 2), columns=list('AB')) #df-dummy wird in nächster Zelle    überschireben  
+    df = pd.DataFrame(np.random.randn(3, 2), columns=list('AB')) #df-dummy wird in nächster Zellen  
     #print("start erfolgreich")
     return(df)
 
@@ -134,6 +137,7 @@ def plotdfs_inoneplot(dfs, startdate,enddate):
 def getdfs_frommulticsv(ndays,fileend='.txt'):
     urls=["https://uni-wuppertal.sciebo.de/s/0WBFg4RTw4I428O/download?path=%2F&files=",
           "https://uni-wuppertal.sciebo.de/s/rEFPb7PQd3yTMNV/download?path=%2F&files="]
+         
     
     import matplotlib.pyplot as plt
     import warnings
@@ -141,21 +145,20 @@ def getdfs_frommulticsv(ndays,fileend='.txt'):
     import pandas as pd
     #import datetime as dt
     dfs=[]
+    
     for url in urls:
           
-        fname=dt.datetime.today().strftime('%Y%m%d')+fileend
-        filelink=url+fname
-        df=pd.read_csv(filelink,index_col=None, sep=';',header=None)
-    #todaystr=datetime.today().strftime('%Y%m%d')
+        df= pd.DataFrame([])
         i=1
         while i<ndays:
             datestr=(dt.datetime.today()-dt.timedelta(days=i)).strftime('%Y%m%d')
-            #print(datestr)
             fname=datestr+fileend
             filelink=url+fname
             try:
+                #print(filelink)
                 dfi=pd.read_csv(filelink,index_col=None, sep=';',header=None)
                 df=df.append(dfi)
+                    
             except:
                 print(fname+' not found on File Server')
             i+=1
