@@ -149,7 +149,7 @@ def getdfs_frommulticsv(ndays,fileend='.txt'):
     for url in urls:
           
         df= pd.DataFrame([])
-        i=1
+        i=0
         while i<ndays:
             datestr=(dt.datetime.today()-dt.timedelta(days=i)).strftime('%Y%m%d')
             fname=datestr+fileend
